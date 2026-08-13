@@ -1,0 +1,88 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SkiaLottieDemo.MainPage"
+             xmlns:local="clr-namespace:SkiaLottieDemo"
+             xmlns:skia="clr-namespace:SkiaSharp.Extended.UI.Controls;assembly=SkiaSharp.Extended.UI"
+             xmlns:vm="clr-namespace:SkiaLottieDemo.ViewModels"
+             x:DataType="vm:MainPageViewModel"
+             Title="Boston from Above - SkiaSharp C# Skottie Demo">
+    <VerticalStackLayout Margin="30">
+
+        <!-- Header -->
+        <Label Text="Skia Lottie Demo in C# By Boston from Above" FontSize="45" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="20"/>
+
+        <!-- Body -->
+            <HorizontalStackLayout HorizontalOptions="Fill">
+            <!-- Content -->
+            <Grid Grid.Column="0">
+                <Label x:Name="GoToMetecons"  LineBreakMode="WordWrap" FontFamily="NotoSans" FontSize="12" HorizontalOptions="Start" HorizontalTextAlignment="Start" Margin="5">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Thank you to to Bas Milius, the creator of these handy Lottie weather animations. Click here for the complete meteocons repository." TextColor="Blue" TextDecorations="Underline">
+                                <Span.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GoToMeteoconsCommand}" />
+                                </Span.GestureRecognizers>
+                            </Span>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </Grid>
+            <Grid Grid.Column="1" FlexLayout.Basis="50%">
+                <Label x:Name="GoToBostonFromAbove"  LineBreakMode="WordWrap" FontSize="12" HorizontalOptions="End" HorizontalTextAlignment="Start" Margin="5">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Here's my site. If there is something I can do for you to help, please contact me. Thank you." TextColor="Blue" TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding GoToBostonFromAboveCommand}" />
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+                </Grid>
+            </HorizontalStackLayout>
+            <StackLayout HorizontalOptions="Start" WidthRequest="200" x:Name="Controller" FlexLayout.Grow="1">
+
+
+
+                <Picker x:Name="Meteocons" VerticalOptions="Start" HeightRequest="60"  ItemsSource="{Binding Meteocons}"
+                    ItemDisplayBinding="{Binding ImageName}" HorizontalOptions="Start" SelectedItem="{Binding 
+    FirstSelectedAnimation}" HorizontalTextAlignment="Start" Margin="10"/>
+
+                <Picker x:Name="MeteoconSecond" VerticalOptions="Start" HeightRequest="60"  ItemsSource="{Binding Meteocons}"
+                ItemDisplayBinding="{Binding ImageName}" HorizontalOptions="Start" SelectedItem="{Binding 
+SecondSelectedAnimation}" HorizontalTextAlignment="Start" Margin="10"/>
+
+
+            </StackLayout>
+
+            <Grid HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="300" WidthRequest="300"  Margin="5">
+                <skia:SKLottieView x:Name="OverLay"
+                          Source="{Binding FirstSelectedAnimation.Animation}"
+                            HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="50"
+                         RepeatCount="-1"
+                         RepeatMode="Restart"
+                         WidthRequest="250"
+                         HeightRequest="250"
+                         ZIndex="1"/>
+                <skia:SKLottieView x:Name="OverlayImage"
+                        Source="{Binding SecondSelectedAnimation.Animation}"
+                        HorizontalOptions="End"
+                        VerticalOptions="End"
+                        RepeatCount="-1"
+                        RepeatMode="Restart"
+                        WidthRequest="250"
+                        HeightRequest="250"
+                        ZIndex="0"/>
+
+            </Grid>
+
+        <!-- Footer -->
+        <Label Text="FOOTER"
+               FontSize="20"
+               BackgroundColor="Pink"
+               HorizontalTextAlignment="Center" />
+    </VerticalStackLayout>
+</ContentPage>

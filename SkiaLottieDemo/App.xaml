@@ -1,7 +1,6 @@
 ﻿<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:SkiaLottieDemo"
-             xmlns:converters="clr-namespace:SkiaLottieDemo.Converters"
              x:Class="SkiaLottieDemo.App">
     <Application.Resources>
         <ResourceDictionary>
@@ -9,10 +8,6 @@
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
-
-            <!-- Converters -->
-            <converters:LottieUrlToStreamConverter x:Key="LottieUrlToStreamConverter" />
-            <converters:LottieUrlToJsonConverter x:Key="LottieUrlToJsonConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -13,7 +13,7 @@ namespace SkiaLottieDemo.ViewModels
         public partial Meteocon SecondSelectedAnimation { get; set; }
         public MainPageViewModel()
         {
-            var files = Directory.GetFiles(@"lotties\", "*.json", SearchOption.TopDirectoryOnly);
+            var files = Directory.GetFiles("meteocons/", "*.json", SearchOption.TopDirectoryOnly);
 
             Meteocons = new List<Meteocon>();
 

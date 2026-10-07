@@ -18,6 +18,7 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<Material3>enable</Material3>
 
 		<!-- Enable XAML source generation for faster build times and improved performance.
 		     This generates C# code from XAML at compile time instead of runtime inflation.
@@ -46,168 +47,32 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.22621.0</SupportedOSPlatformVersion>
 		<TargetPlatformMinVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.22621.0</TargetPlatformMinVersion>
 	</PropertyGroup>
-
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
-
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
-
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
-		
+		<!-- Lottie Animations -->
+		<Content Include="meteocons\*.json" />
 		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
-
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Remove="IWeatherService.cs" />
-	  <Compile Remove="MeteoconsResolver.cs" />
-	  <Compile Remove="WeatherData.cs" />
-	  <Compile Remove="WeatherService.cs" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Remove="thunderstorms-overcast-day-rain.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\extreme-day-drizzle.json" Link="lotties\extreme-day-drizzle.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </Content>
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\extreme-day-sleet.json" Link="lotties\extreme-day-sleet.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\extreme-night-drizzle.json" Link="lotties\extreme-night-drizzle.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\extreme-night-sleet.json" Link="lotties\extreme-night-sleet.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\extreme-thunderstorms-overcast-day-hail.json" Link="lotties\extreme-thunderstorms-overcast-day-hail.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\extreme-thunderstorms-overcast-night-hail.json" Link="lotties\extreme-thunderstorms-overcast-night-hail.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\fog-day.json" Link="lotties\fog-day.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\fog-night.json" Link="lotties\fog-night.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\moon-first-quarter.json" Link="lotties\moon-first-quarter.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\moon-full.json" Link="lotties\moon-full.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\moon-last-quarter.json" Link="lotties\moon-last-quarter.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\moon-new.json" Link="lotties\moon-new.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\moon-waning-crescent.json" Link="lotties\moon-waning-crescent.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\moon-waning-gibbous.json" Link="lotties\moon-waning-gibbous.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\moon-waxing-crescent.json" Link="lotties\moon-waxing-crescent.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\moon-waxing-gibbous.json" Link="lotties\moon-waxing-gibbous.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\moonrise.json" Link="lotties\moonrise.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\moonset.json" Link="lotties\moonset.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\mostly-clear-day-drizzle.json" Link="lotties\mostly-clear-day-drizzle.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\mostly-clear-day-rain.json" Link="lotties\mostly-clear-day-rain.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\mostly-clear-day-sleet.json" Link="lotties\mostly-clear-day-sleet.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\mostly-clear-day-snow.json" Link="lotties\mostly-clear-day-snow.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\mostly-clear-day.json" Link="lotties\mostly-clear-day.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\mostly-clear-night-drizzle.json" Link="lotties\mostly-clear-night-drizzle.json" />
-	  <Content Include="..\..\ThePhotographersForecast\ThePhotographersForecast\meteocons\mostly-clear-night.json" Link="lotties\mostly-clear-night.json" />
-	</ItemGroup>
-
-	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="15.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="15.0.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
-		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.10" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="10.0.10" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.90" />
-		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.10" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.90" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="10.0.12" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="10.0.12" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.110" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="10.0.12" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.110" />
 		<PackageReference Include="SkiaSharp.Extended.UI.Maui" Version="3.0.0" />
-		<PackageReference Include="SkiaSharp.Skottie" Version="4.150.1" />
-		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="4.150.1" />
+		<PackageReference Include="SkiaSharp.Skottie" Version="4.153.1" />
+		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="4.153.1" />
 	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="lotties\" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <None Update="lotties\extreme-day-drizzle.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\extreme-day-sleet.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\extreme-night-drizzle.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\extreme-night-sleet.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\extreme-thunderstorms-overcast-day-hail.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\extreme-thunderstorms-overcast-night-hail.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\fog-day.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\fog-night.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\moon-first-quarter.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\moon-full.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\moon-last-quarter.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\moon-new.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\moon-waning-crescent.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\moon-waning-gibbous.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\moon-waxing-crescent.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\moon-waxing-gibbous.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\moonrise.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\moonset.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\mostly-clear-day-drizzle.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\mostly-clear-day-rain.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\mostly-clear-day-sleet.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\mostly-clear-day-snow.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\mostly-clear-day.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\mostly-clear-night-drizzle.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\mostly-clear-night-rain.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\mostly-clear-night-sleet.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\mostly-clear-night-snow.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	  <None Update="lotties\mostly-clear-night.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	</ItemGroup>
-
 </Project>
